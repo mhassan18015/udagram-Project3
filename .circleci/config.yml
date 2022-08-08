@@ -19,7 +19,7 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           aws-region: AWS_DEFAULT_REGION
           profile-name: AWS_PROFILE
-          eb-env: Udagramapi-env
+        
       - aws-elastic-beanstalk/setup
       # install dependencies in both apps
       - run:
