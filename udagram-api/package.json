@@ -11,7 +11,7 @@
     "tsc": "npx tsc",
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
-    "clean": "rimraf www/ || true",
+    "clean": "rm -rf www/ || true",
     "deploy": "npm run build && eb use Udagramapi-env && eb deploy",
     "build": "npm run clean && tsc && copy src/config www/config && copy .npmrc www/.npmrc && copy package.json www/package.json && cd www && bestzip Archive.zip && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
