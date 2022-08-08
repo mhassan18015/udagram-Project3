@@ -13,7 +13,7 @@
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
     "deploy": "npm run build && eb use Udagramapi-env && eb deploy",
-    "build": "npm run clean && tsc && copy src/config www/config && copy .npmrc www/.npmrc && copy package.json www/package.json && cd www && bestzip Archive.zip && cd ..",
+    "build": "npm install && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -50,7 +50,7 @@
     "chai-http": "^4.2.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "graceful-fs": "^4.2.10",
+    "graceful-fs": "^4.2.4",
     "mocha": "^6.1.4",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.9.10"
