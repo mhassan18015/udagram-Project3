@@ -12,8 +12,8 @@
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
-    "deploy": "yarn run build && eb list && eb use Udagramapi-env && eb deploy",
-    "build": "npm install && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && bestzip Archive.zip . && cd ..",
+    "deploy": "npm run build && eb list && eb use Udagramapi-env && eb deploy",
+    "build": "npm install && npm run clean && npx tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -34,8 +34,7 @@
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.4",
-    "sequelize-typescript": "^0.6.9",
-      "yarn": "^1.22.19"      
+    "sequelize-typescript": "^0.6.9"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.26",
@@ -55,7 +54,5 @@
     "mocha": "^6.1.4",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.9.10"
-          
-
   }
 }
