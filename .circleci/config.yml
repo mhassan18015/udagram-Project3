@@ -42,11 +42,7 @@ jobs:
           command: |
             npm run frontend:deploy
              # TODO: sending the env variable from circleCli to AWS
-      # initialization of eb and passing env
-      - run:
-          name:  EB and passing
-          command: |
-             npm run ebPass
+      # build und Deploy backend      
       - run:
           name: build und Deploy backend
           # TODO: install, build, deploy backend
