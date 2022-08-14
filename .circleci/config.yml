@@ -37,14 +37,18 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
-          name: build und Deploy frontend
+          name: build and Deploy frontend
           # TODO: install, build, deploy frontend
           command: |
             npm run frontend:deploy
              # TODO: sending the env variable from circleCli to AWS
-      # build und Deploy backend      
+      # initialization of eb and passing env
       - run:
-          name: build und Deploy backend
+          name:  EB and passing
+          command: |
+             npm run ebPass
+      - run:
+          name: build and Deploy backend
           # TODO: install, build, deploy backend
           command: |
             npm run api:deploy
