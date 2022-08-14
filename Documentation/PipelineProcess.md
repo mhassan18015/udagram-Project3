@@ -12,4 +12,4 @@ Process:
 	Run Front-end and Back-end deployment scripts to deploy Back-end to AWS Elastic Beanstalk and Front-end to AWS S3 bucket.
 		Front-End Script: `cd udagram-frontend && chmod +x ./bin/deploy.sh && ./bin/deploy.sh`
 			Front-End deploy.sh contents: `aws s3 cp --recursive --acl public-read ./www s3://udagram-api-mh/`
-		Back-End Script: `cd udagram-api && eb init --region us-east-1 --platform Node.js udagram-api && eb deploy Udagramapi-env`
+		Back-End Script: `cd udagram-api && eb init --region us-east-1 --platform Node.js udagram-api && eb deploy udagram-dev`

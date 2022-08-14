@@ -2,7 +2,7 @@
 
 ## Write code that demonstrates parameterized environment variables
 
-- Environment variables stored in AWS elastic beanstalk configuration of environment Udagramapi-env under software -> Environment properties settings.
+- Environment variables stored in AWS elastic beanstalk configuration of environment udagram-dev under software -> Environment properties settings.
 - Variables: 
 	- AWS_BUCKET = udacity-fullstackhosted
 	- AWS_PROFILE = CLIUser
@@ -23,7 +23,7 @@
 		- "backend:install": "cd udagram-api && npm install"
 		- "frontend:build": "cd udagram-frontend && npm run build"
 		- "backend:build": "cd udagram-api && npm run build"
-		- "backend:deploy": "cd udagram-api && eb init --region us-east-1 --platform Node.js udagram-api && eb deploy Udagramapi-env"
+		- "backend:deploy": "cd udagram-api && eb init --region us-east-1 --platform Node.js udagram-api && eb deploy udagram-dev"
 		- "frontend:deploy": "cd udagram-frontend && chmod +x ./bin/deploy.sh && ./bin/deploy.sh"
 		- "unitTest": "cd udagram-frontend && npm run test"
 		- "endToEndTest": "cd udagram-frontend && npm run e2e"
