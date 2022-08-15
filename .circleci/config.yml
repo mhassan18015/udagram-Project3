@@ -41,7 +41,6 @@ jobs:
           # TODO: install, build, deploy frontend
           command: |
             npm run frontend:deploy
-             # TODO: sending the env variable from circleCli to AWS
       - run:
           name: build and Deploy backend
           # TODO: install, build, deploy backend
