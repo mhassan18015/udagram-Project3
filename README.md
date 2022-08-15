@@ -4,10 +4,10 @@
 
 - Environment variables stored in AWS elastic beanstalk configuration of environment udagram-dev under software -> Environment properties settings.
 - Variables: 
-	- AWS_BUCKET = udacity-fullstackhosted
+	- AWS_BUCKET = udacity-
 	- AWS_PROFILE = CLIUser
 	- AWS_REGION = us-east-1
-	- JWT_SECRET = udacity123
+	- JWT_SECRET = 
 	- URL = http://udacity-fullstackhosted.s3-website-us-east-1.amazonaws.com/
 
 - Environment variables for CI/CD stored in CircleCI Project Settings -> Environment Variables
