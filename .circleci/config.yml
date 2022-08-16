@@ -1,15 +1,15 @@
 version: 2.1
 orbs:
   # orgs contain basc recipes and reproducible actions (install node, aws, etc.)
-  node: circleci/node@5.0.2
-  eb: circleci/aws-elastic-beanstalk@2.0.1
-  aws-cli: circleci/aws-cli@3.1.1
+  node: circleci/node@5.0.0
+  aws-cli: circleci/aws-cli@2.0.3
+  aws-elastic-beanstalk: circleci/aws-elastic-beanstalk@2.0.1
   # different jobs are calles later in the workflows sections
 jobs:
   build:
     docker:
       # the base image can run most needed actions with orbs
-      - image: "cimg/node:14.15"
+      - image: "cimg/base:stable"
     steps:
       # install node and checkout code
       - node/install:
