@@ -31,13 +31,12 @@ jobs:
       - image: "cimg/base:stable"
       # more setup needed for aws, node, elastic beanstalk
     steps:
-      - node/install:
+     - node/install:
           node-version: 16.15.1
       - eb/setup
       - aws-cli/setup
-      - checkout
-     # Build and Deploy front and backend
-      - run:
+     - checkout
+     - run:
           name: build and Deploy frontend
           # TODO: install, build, deploy frontend
           command: |
