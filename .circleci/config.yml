@@ -1,59 +1,50 @@
 version: 2.1
 orbs:
   # orgs contain basc recipes and reproducible actions (install node, aws, etc.)
-  node: circleci/node@5.0.2
-  eb: circleci/aws-elastic-beanstalk@2.0.1
-  aws-cli: circleci/aws-cli@3.1.1
+  node: circleci/node@4.1.0
+  aws-cli: circleci/aws-cli@2.0.3
+  aws-elastic-beanstalk: circleci/aws-elastic-beanstalk@2.0.0
   # different jobs are calles later in the workflows sections
 jobs:
   build:
     docker:
       # the base image can run most needed actions with orbs
-      - image: "cimg/node:stable"
+      - image: "cimg/base:stable"
     steps:
-      # install node and checkout code
       - node/install:
           node-version: 16.15.1
       - checkout
-      # Use root level package.json to install dependencies in the frontend app
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_DEFAULT_REGION
+          profile-name: AWS_PROFILE
+        
+      - aws-elastic-beanstalk/setup
+      # install dependencies in both apps
       - run:
-          name: Install Front-End Dependencies
+          name: Front-End install
           command: |
             npm run frontend:install
-      # TODO: Install dependencies in the the backend API
       - run:
-          name: Install API Dependencies
+          name: Back-End install
           command: |
             npm run api:install
-      # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
-    steps:
-      - eb/setup
-      - aws-cli/setup
-     - checkout
-     - run:
-          name: build and Deploy frontend
-          # TODO: install, build, deploy frontend
+      # Build front and back end apps
+      - run:
+          name: Front-End Build
           command: |
-            npm run frontend:deploy
-             # TODO: sending the env variable from circleCli to AWS
-     - run:
-          name: build and Deploy backend
-          # TODO: install, build, deploy backend
+            npm run frontend:build
+      - run:
+          name: Back-End Build
+          command: |
+            npm run api:build
+      # Deploy front and back end apps
+      - run:
+          name: Back-End deploy
           command: |
             npm run api:deploy
-
-workflows:
-  udagram:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          requires:
-            - build
+      - run:
+          name: Front-End deploy
+          command: |
+            npm run frontend:deploy
