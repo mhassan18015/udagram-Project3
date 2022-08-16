@@ -36,6 +36,7 @@ jobs:
       - eb/setup
       - aws-cli/setup
       - checkout
+     # Build and Deploy front and backend
       - run:
           name: build and Deploy frontend
           # TODO: install, build, deploy frontend
