@@ -13,7 +13,7 @@ jobs:
     steps:
       # install node and checkout code
       - node/install:
-          node-version: "14.15"
+          node-version: 16.15.1
       - checkout
       # Use root level package.json to install dependencies in the frontend app
       - run:
