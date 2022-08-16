@@ -11,52 +11,35 @@ jobs:
       # the base image can run most needed actions with orbs
       - image: "cimg/base:stable"
     steps:
-      # install node and checkout code
       - node/install:
           node-version: 16.15.1
       - checkout
-      # Use root level package.json to install dependencies in the frontend app
+      - aws-cli/setup:
+      - aws-elastic-beanstalk/setup
+      # install dependencies in both apps
       - run:
-          name: Install Front-End Dependencies
+          name: Front-End install
           command: |
             npm run frontend:install
-      # TODO: Install dependencies in the the backend API
       - run:
-          name: Install API Dependencies
+          name: Back-End install
           command: |
             npm run api:install
-      # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
-    steps:
-      - node/install:
-          node-version: "14.15"
-      - eb/setup
-      - aws-cli/setup
-      - checkout
+      # Build front and back end apps
       - run:
-          name: build and Deploy frontend
-          # TODO: install, build, deploy frontend
+          name: Front-End Build
           command: |
-            npm run frontend:deploy
-             # TODO: sending the env variable from circleCli to AWS
-      # Build and deploy Back end
-     - run:
-          name: build and Deploy backend
-          # TODO: install, build, deploy backend
+            npm run frontend:build
+      - run:
+          name: Back-End Build
+          command: |
+            npm run api:build
+      # Deploy front and back end apps
+      - run:
+          name: Back-End deploy
           command: |
             npm run api:deploy
-
-workflows:
-  udagram:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
-      - deploy:
-          requires:
-            - build
+      - run:
+          name: Front-End deploy
+          command: |
+            npm run frontend:deploy
