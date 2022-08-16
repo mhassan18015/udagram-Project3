@@ -4,11 +4,11 @@
 
 - Environment variables stored in AWS elastic beanstalk configuration of environment udagram-dev under software -> Environment properties settings.
 - Variables: 
-	- AWS_BUCKET = udacity-
-	- AWS_PROFILE = CLIUser
-	- AWS_REGION = us-east-1
+	- AWS_BUCKET = 
+	- AWS_PROFILE = 
+	- AWS_REGION = 
 	- JWT_SECRET = 
-	- URL = http://udacity-fullstackhosted.s3-website-us-east-1.amazonaws.com/
+	- URL = http://udagram-api-mh.s3-website-us-east-1.amazonaws.com/
 
 - Environment variables for CI/CD stored in CircleCI Project Settings -> Environment Variables
 	- AWS_ACCESS_KEY_ID - IAM user access key for AWScli and elastic beanstalk deployment
@@ -19,33 +19,37 @@
 ## Write a project-level package.json file and organize it properly
 
 	- Project-level package.json file contains scripts:
-		- "frontend:install": "cd udagram-frontend && npm install"
-		- "backend:install": "cd udagram-api && npm install"
-		- "frontend:build": "cd udagram-frontend && npm run build"
-		- "backend:build": "cd udagram-api && npm run build"
-		- "backend:deploy": "cd udagram-api && eb init --region us-east-1 --platform Node.js udagram-api && eb deploy udagram-dev"
-		- "frontend:deploy": "cd udagram-frontend && chmod +x ./bin/deploy.sh && ./bin/deploy.sh"
-		- "unitTest": "cd udagram-frontend && npm run test"
-		- "endToEndTest": "cd udagram-frontend && npm run e2e"
+		"frontend:install": "cd udagram-frontend && npm install --force",
+        "frontend:start": "cd udagram-frontend && npm run start",
+        "frontend:build": "cd udagram-frontend && npm run build",
+        "frontend:test": "cd udagram-frontend && npm run test",
+        "frontend:e2e": "cd udagram-frontend && npm run e2e",
+        "frontend:lint": "cd udagram-frontend && npm run lint",
+        "frontend:deploy": "cd udagram-frontend && npm run deploy",
+        "api:install": "cd udagram-api && npm install .",
+        "api:build": "cd udagram-api && npm run build", 
+        "api:start": "cd udagram-api && npm run dev",
+        "api:deploy": "cd udagram-api && npm install -g typescript && npm run deploy",
+        "deploy": "npm run api:deploy && npm run frontend:deploy"
 
 
 ## Configure the needed infrastructure for a web application
 	
 	- RDS Screenshot - 
-![RDS Screenshot](/documentation/screenshots/)
+![RDS Screenshot](/Documentation/screenshots/RDS.jpg)
 	- Elastic Beanstalk Screenshot - 
-![EB Screenshot](/documentation/screenshots/)
+![EB Screenshot](/documentation/screenshots/Elasticbean.jpg)
 	- S3 Screenshot - 
-![S3 Screenshot](/documentation/screenshots/)
+![S3 Screenshot](/documentation/screenshots/S3 Bucket.jpg)
 
 # Configuring Continuous Integration Pipeline with Github
 
 ## Trigger a successful pipeline on each push to the main branch
 	- CircleCI Build Status:
-![CircleCI](i have to fix it)
+![CircleCI](Documentation/screenshots/Circleci%20Build1.jpg)
 
 	- See screenshot
-![Build Screenshot](/documentation/screenshots/)
+![Build Screenshot](/Documentation/screenshots/Circleci%20Build2.jpg)
 
 ## Write a proper pipeline file using the config.yml format used by CircleCi
 
@@ -58,7 +62,7 @@
 
 ## Prepare an architecture diagram to document the deployment flow
 	- Development Pipeline Diagram
-![Development Diagram](documentation/screenshots/)
+![Development Diagram](Documentation/DevDiagram.png)
 
 	# Udagram
 
@@ -76,7 +80,7 @@ The project can run but is missing some information to connect to the database a
 ### Dependencies
 
 ```
-- Node v14.15.1 (LTS) or more recent. While older versions can work it is advisable to keep node to latest LTS version
+- Node v16.15.1 (LTS) or more recent. While older versions can work it is advisable to keep node to latest LTS version
 
 - npm 6.14.8 (LTS) or more recent, Yarn can work but was not tested for this project
 
@@ -92,8 +96,8 @@ The project can run but is missing some information to connect to the database a
 
 Provision the necessary AWS services needed for running the application:
 
-1. In AWS, provision a publicly available RDS database running Postgres. <Place holder for link to classroom article>
-1. In AWS, provision a s3 bucket for hosting the uploaded files. <Place holder for tlink to classroom article>
+1. In AWS, provision a publicly available RDS database running Postgres. 
+1. In AWS, provision a s3 bucket for hosting the uploaded files. 
 1. Export the ENV variables needed or use a package like [dotnev](https://www.npmjs.com/package/dotenv)/.
 1. From the root of the repo, navigate udagram-api folder `cd starter/udagram-api` to install the node_modules `npm install`. After installation is done start the api in dev mode with `npm run dev`.
 1. Without closing the terminal in step 1, navigate to the udagram-frontend `cd starter/udagram-frontend` to intall the node_modules `npm install`. After installation is done start the api in dev mode with `npm run start`.

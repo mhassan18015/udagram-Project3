@@ -5,7 +5,7 @@ Back-end API Environment:
 		Environment includes Postgres database - endpoint: https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1#database:id=database-2;is-cluster=false
 		
 		App name: udagram-api
-		S3 bucket for uploading udagram-api app - elasticbeanstalk-us-east-1-618730978837
+		S3 bucket for uploading udagram-api app - elasticbeanstalk-us-east-1
 
 Front-End 
 	AWS S3 bucket udacity-fullstackhosted
