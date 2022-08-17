@@ -8,7 +8,8 @@
 	- AWS_PROFILE = 
 	- AWS_REGION = 
 	- JWT_SECRET = 
-	- URL = http://udagram-api-mh.s3-website-us-east-1.amazonaws.com/
+	- URL =   apiHost: 'http://udagram-dev.eba-mznjt2zt.us-east-1.elasticbeanstalk.com/api/v0',
+
 
 - Environment variables for CI/CD stored in CircleCI Project Settings -> Environment Variables
 	- AWS_ACCESS_KEY_ID - IAM user access key for AWScli and elastic beanstalk deployment
