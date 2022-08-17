@@ -12,6 +12,6 @@
         "api:start": "cd udagram-api && npm run dev",
         "api:deploy": "cd udagram-api && npm install -g typescript && npm run deploy",
         "deploy": "npm run api:deploy && npm run frontend:deploy",
-        "ebPass": "cd udagram/udagram-api && eb setenv POSTGRES_HOST=${POSTGRES_HOST} DB_PORT=${DB_PORT} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} POSTGRES_USERNAME=${POSTGRES_USERNAME} POSTGRES_DB=${POSTGRES_DB} JWT_SECRET=${JWT_SECRET} "
+        "ebPass": "cd udagram-api && eb setenv POSTGRES_HOST=${POSTGRES_HOST} DB_PORT=${DB_PORT} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} POSTGRES_USERNAME=${POSTGRES_USERNAME} POSTGRES_DB=${POSTGRES_DB} JWT_SECRET=${JWT_SECRET} "
     }
    }   
