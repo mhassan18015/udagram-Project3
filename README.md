@@ -8,7 +8,7 @@
 	- AWS_PROFILE = 
 	- AWS_REGION = 
 	- JWT_SECRET = 
-	- URL =   apiHost: 'http://udagram-dev.eba-mznjt2zt.us-east-1.elasticbeanstalk.com/api/v0',
+	- URL =   apiHost: 'http://udagram-api-dev.eba-9x5pnrmj.us-east-1.elasticbeanstalk.com//api/v0',
 
 
 - Environment variables for CI/CD stored in CircleCI Project Settings -> Environment Variables
@@ -31,7 +31,8 @@
         "api:build": "cd udagram-api && npm run build", 
         "api:start": "cd udagram-api && npm run dev",
         "api:deploy": "cd udagram-api && npm install -g typescript && npm run deploy",
-        "deploy": "npm run api:deploy && npm run frontend:deploy"
+        "deploy": "npm run api:deploy && npm run frontend:deploy",
+		 "ebPass": "cd udagram-api && eb use udagram-api-dev && eb setenv POSTGRES_HOST=${POSTGRES_HOST} DB_PORT=${DB_PORT} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} POSTGRES_USERNAME=${POSTGRES_USERNAME} POSTGRES_DB=${POSTGRES_DB} JWT_SECRET=${JWT_SECRET} "
 
 
 ## Configure the needed infrastructure for a web application
@@ -81,7 +82,7 @@ The project can run but is missing some information to connect to the database a
 ### Dependencies
 
 ```
-- Node v16.15.1 (LTS) or more recent. While older versions can work it is advisable to keep node to latest LTS version
+- Node v14.15.1 (LTS) or more recent. While older versions can work it is advisable to keep node to latest LTS version
 
 - npm 6.14.8 (LTS) or more recent, Yarn can work but was not tested for this project
 
