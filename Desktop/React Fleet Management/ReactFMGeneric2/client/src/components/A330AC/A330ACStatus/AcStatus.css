@@ -1,0 +1,74 @@
+.engine-data-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.table-container {
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+.engine-data-container th,
+.engine-data-container td {
+  padding: 8px 11px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.engine-data-container th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.engine-data-container tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.engine-data-container tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.engine-data-container tbody tr:hover {
+  background-color: #e6f7ff;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.button-container button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+
+.button-container button:hover {
+  background-color: #3e8e41;
+}
+
+.table-container {
+  max-height: 800px; /* Adjust the max-height as per your requirements */
+  overflow-y: scroll;
+}
+
+.table-container table {
+  border-collapse: separate !important;
+  table-layout: auto;
+}
+
+.table-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+.invalid-date-row {
+  color: red;
+}

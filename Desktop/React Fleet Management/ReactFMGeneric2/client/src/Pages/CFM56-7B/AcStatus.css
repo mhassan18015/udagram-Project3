@@ -1,0 +1,18 @@
+.container {
+  text-align: left;
+  margin: 5px;
+  display: inline-block; /* or display: inline; */
+  margin-right: 10px; /* Optional: Add some space between the label and the count */
+}
+.inline-text {
+  display: inline-block; /* or display: inline; */
+  margin-right: 10px; /* Optional: Add some space between the label and the count */
+  font-size: larger;
+}
+.flex-container {
+  display: flex;
+  align-items: baseline; /* Align items along their baselines to keep them on the same line */
+}
+.heading-margin {
+  margin-right: 20px; /* Adjust the value as needed */
+}
